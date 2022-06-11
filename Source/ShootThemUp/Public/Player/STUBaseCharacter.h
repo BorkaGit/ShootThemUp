@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "STUBaseWeapon.h"
 #include "Components/STUHealthComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "GameFramework/Character.h"
@@ -14,6 +15,8 @@ class UCameraComponent;
 class USpringArmComponent;
 class USTUHealthComponent;
 class UTextRenderComponent;
+class USTUWeaponComponent;
+
 UCLASS()
 class SHOOTTHEMUP_API ASTUBaseCharacter : public ACharacter
 {
@@ -38,6 +41,9 @@ protected:
 	UPROPERTY(VisibleAnywhere,BlueprintReadWrite,Category="Components")
 	UTextRenderComponent* HealthTextComponent;
 
+	UPROPERTY(VisibleAnywhere,BlueprintReadWrite,Category="Components")
+	USTUWeaponComponent* WeaponComponent;
+	
 	UPROPERTY(EditDefaultsOnly,Category="Animation")
 	UAnimMontage* DeathAnimMontage;
 
@@ -49,6 +55,8 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly,Category="Damage")
 	FVector2D LandedDamage = FVector2D(10.0f, 100.0f);
+
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -77,4 +85,5 @@ private:
 
 	UFUNCTION()
 	void OnGroundLanded(const FHitResult& Hit);
+	
 };

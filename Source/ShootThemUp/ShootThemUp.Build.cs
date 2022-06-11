@@ -10,7 +10,16 @@ public class ShootThemUp : ModuleRules
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
-		PublicIncludePaths.AddRange(new string[] { "ShootThemUp/Public/Player","ShootThemUp/Public/Player/Components" ,"ShootThemUp/Public/Components", "ShootThemUp/Public/Dev"});
+		PublicIncludePaths.AddRange(new string[]
+		{
+			"ShootThemUp/Public/Player",
+			"ShootThemUp/Public/Player/Components",
+			"ShootThemUp/Public/Components", 
+			"ShootThemUp/Public/Dev",
+			"ShootThemUp/Public/Weapon",
+			"ShootThemUp/Public/UI"
+			
+		});
 		
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
