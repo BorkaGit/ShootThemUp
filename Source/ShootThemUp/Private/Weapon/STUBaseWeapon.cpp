@@ -26,50 +26,18 @@ void ASTUBaseWeapon::BeginPlay()
 
 void ASTUBaseWeapon::StartFire()
 {
-	MakeShot();
-	GetWorldTimerManager().SetTimer(ShotTimerHandle, this, &ASTUBaseWeapon::MakeShot, TimeBetweenShots, true);
+	
 }
 
 void ASTUBaseWeapon::StopFire()
 {
-	GetWorldTimerManager().ClearTimer(ShotTimerHandle);
+	
 }
 
 void ASTUBaseWeapon::MakeShot()
 {
-	if(!GetWorld()) return;
-
-	FVector TraceStart, TraceEnd;
-	if(!GetTraceData(TraceStart,TraceEnd)) return;
-
-	FHitResult HitResult;
-	MakeHit(HitResult,TraceStart,TraceEnd);
 	
-	const FVector ActualTraceEnd = HitResult.bBlockingHit ? HitResult.ImpactPoint : HitResult.TraceEnd;
-	const FVector HitDirectionFromMuzzle = (ActualTraceEnd - GetMuzzleWorldLocation()).GetSafeNormal();
-	const auto AngleBetween = FMath::Acos(FVector::DotProduct(ActualTraceEnd,HitDirectionFromMuzzle));
-	const auto Degrees = FMath::RadiansToDegrees(AngleBetween);
-	UE_LOG(LogBaseWeapon, Display, TEXT("Shooting angle: %.0f"), Degrees);
-	if(Degrees > 90.0f)
-	{
-		UE_LOG(LogBaseWeapon, Error, TEXT("Attempted to shoot backwards!"));
-		return;
-	}
-		
-	if(HitResult.bBlockingHit)
-	{
-		MakeDamage(HitResult);
-		DrawDebugLine(GetWorld(),GetMuzzleWorldLocation(),HitResult.ImpactPoint,FColor::Red,false,3.0f,0,3.0f);
-		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10.0f, 24, FColor::Red, false, 5.0f);
-		
-		
-		UE_LOG(LogBaseWeapon,Display,TEXT("Bone: %s"),*HitResult.BoneName.ToString());
-	}
-	else
-	{
-		DrawDebugLine(GetWorld(),GetMuzzleWorldLocation(),TraceEnd,FColor::Red,false,3.0f,0,3.0f);
-	}
-} \
+} 
 
 APlayerController* ASTUBaseWeapon::GetPlayerController() const
 {
@@ -101,8 +69,7 @@ bool ASTUBaseWeapon::GetTraceData(FVector& TraceStart,FVector& TraceEnd) const
 	if(!GetPlayerViewPoint(ViewLocation,ViewRotation) )return false;
 	
 	TraceStart  = ViewLocation;
-	const auto HalfRad = FMath::DegreesToRadians(BulletSpread);
-	const FVector ShootDirection = FMath::VRandCone( ViewRotation.Vector(), HalfRad );
+	const FVector ShootDirection =  ViewRotation.Vector();
 	TraceEnd = TraceStart + ShootDirection * TraceMaxDistance;
 	return true;
 }
