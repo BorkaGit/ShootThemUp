@@ -16,7 +16,8 @@ class SHOOTTHEMUP_API ASTUBaseWeapon : public AActor
 public:	
 	ASTUBaseWeapon();
 
-	virtual void Fire();
+	virtual void StartFire();
+	virtual void StopFire();
 	
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category= "Components")
@@ -29,7 +30,13 @@ protected:
 	float TraceMaxDistance = 1500.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	float HitDamage = 30.0f;
+	float HitDamage = 10.0f;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	float TimeBetweenShots = 0.1f;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	float BulletSpread = 1.5f;
 	
 	virtual void BeginPlay() override;
 	
@@ -40,4 +47,7 @@ protected:
 	bool GetTraceData(FVector& TraceStart,FVector& TraceEnd) const;
 	void MakeHit(FHitResult& HitResult, const FVector& TraceStart, const FVector& TraceEnd);
 	void MakeDamage(const FHitResult& HitResult);
+
+private:
+	FTimerHandle ShotTimerHandle;
 };
