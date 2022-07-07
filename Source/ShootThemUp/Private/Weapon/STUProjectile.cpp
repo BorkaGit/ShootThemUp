@@ -14,7 +14,6 @@ ASTUProjectile::ASTUProjectile()
 	CollisionComponent = CreateDefaultSubobject<USphereComponent>("SphereComponent");
 	CollisionComponent->InitSphereRadius(5.0f);
 	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	// No physics by collision , only notifications 
 	CollisionComponent->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Block);
 	SetRootComponent(CollisionComponent);
 
