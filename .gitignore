@@ -72,3 +72,9 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+ArchivedBuilds/*
+
+Paks/*
+*.pdb
+Stage/Windows/ShootThemUp/Content/Paks/ShootThemUp-Windows.ucas
