@@ -1,0 +1,8 @@
+ShootThemUp/Binaries/Win64/ShootThemUp-Win64-Shipping.pdb	2022-07-10T04:21:58.597Z
+Engine/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3_x64.pdb	2022-04-11T16:24:11.639Z
+Engine/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3Common_x64.pdb	2022-04-11T16:24:12.401Z
+Engine/Binaries/ThirdParty/PhysX3/Win64/VS2015/PhysX3Cooking_x64.pdb	2022-04-11T16:24:12.432Z
+Engine/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxFoundation_x64.pdb	2022-04-11T16:24:12.539Z
+Engine/Binaries/ThirdParty/PhysX3/Win64/VS2015/PxPvdSDK_x64.pdb	2022-04-11T16:24:12.548Z
+Engine/Content/SlateDebug/Fonts/LastResort.tps	2022-04-11T16:25:44.943Z
+Engine/Content/SlateDebug/Fonts/LastResort.ttf	2022-04-11T16:25:44.954Z

@@ -8,6 +8,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "STUProjectile.generated.h"
 
+class USTUWeaponFXComponent;
 class USphereComponent;
 class UProjectileMovementComponent;
 
@@ -28,6 +29,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, Category="Weapon")
 	UProjectileMovementComponent* MovementComponent;
+
+	UPROPERTY(VisibleAnywhere, Category = "VFX")
+	USTUWeaponFXComponent* WeaponFXComponent;
 
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Weapon")
 	float DamageRadius = 200.0f;
